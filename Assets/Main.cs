@@ -242,7 +242,7 @@ public class Main : MonoBehaviour {
 					{
 						pixelsmatched++;
 					}
-					if (x == 2 && y == 4 && pixelsmatched == 15)
+					if (x == 2 && y == 4 && pixelsmatched == 15 && !(seperateletters[i].color == Color.black))
 					{
 						if (skipfirstletter)
 						{
