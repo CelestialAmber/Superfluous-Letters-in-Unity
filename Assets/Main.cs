@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -17,6 +17,7 @@ public class Main : MonoBehaviour {
 	 Image[] seperateletters = new Image[26];
 	// Use this for initialization
 	void Start () {
+		Screen.SetResolution(276, 364, false);
 		for (int i = 0; i < 26; i++)
 		{
 			buttons[i] = buttonholder.transform.GetChild(i).gameObject;
@@ -246,6 +247,7 @@ public class Main : MonoBehaviour {
 					{
 						if (skipfirstletter)
 						{
+
 							score++;
 							buttons[i].SetActive(false);
 							seperateletters[i].color = Color.black;
@@ -257,12 +259,15 @@ public class Main : MonoBehaviour {
 
 					}
 				}
+				if (pixelsmatched == 0) break;
 			}
 		}
+	
 	}
+
 	public void Reset()
 	{
-Skipfirstletter = false;
+		skipfirstletter = false;
 		//SceneManager.LoadScene("superfluous");
 			for (int x = 0; x< 3; x++)
 		{
