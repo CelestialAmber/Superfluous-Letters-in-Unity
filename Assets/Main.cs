@@ -216,22 +216,27 @@ public class Main : MonoBehaviour {
 		}	
 		}
 		letter.Apply();
-
-		for (int x = 0; x< 3; x++)
+		for (int i = 0; i < 26; i++)
 		{
-		for (int y = 0; y< 5; y++)
-		{
-				if (!(letter.GetPixel(x, y) == (charactercolors[letterindex][y * 3 + x] == 1 ? Color.white : Color.black))) break;
-				if (x == 2 && y == 4)
+			for (int x = 0; x < 3; x++)
+			{
+				for (int y = 0; y < 5; y++)
 				{
-					if (skipfirstletter)
-						score++;	
-					else
-						skipfirstletter = true;
+					if (!(letter.GetPixel(x, y) == (charactercolors[i][y * 3 + x] == 1 ? Color.white : Color.black))) break;
+					if (x == 2 && y == 4)
+					{
+						if (skipfirstletter)
+						{
+							score++;
+							return;
+						}
+						else
+							skipfirstletter = true;
 
 
+					}
 				}
-		}	
+			}
 		}
 	}
 	public void Reset()
