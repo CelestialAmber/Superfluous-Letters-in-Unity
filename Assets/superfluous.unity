@@ -1884,6 +1884,8 @@ MonoBehaviour:
   score: 0
   scoretext: {fileID: 1682665190}
   letterimage: {fileID: 1716901343}
+  buttonholder: {fileID: 1962009567}
+  seperateletterholder: {fileID: 1221526622}
 --- !u!1 &536116931
 GameObject:
   m_ObjectHideFlags: 0

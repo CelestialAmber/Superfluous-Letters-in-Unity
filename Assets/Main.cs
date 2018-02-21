@@ -11,8 +11,18 @@ public class Main : MonoBehaviour {
 	public Text scoretext;
 	public Image letterimage;
 	bool skipfirstletter = false;
+	public int pixelsmatched = 0;
+	public GameObject buttonholder, seperateletterholder;
+	GameObject[] buttons = new GameObject[26];
+	 Image[] seperateletters = new Image[26];
 	// Use this for initialization
 	void Start () {
+		for (int i = 0; i < 26; i++)
+		{
+			buttons[i] = buttonholder.transform.GetChild(i).gameObject;
+			seperateletters[i] = seperateletterholder.transform.GetChild(i).GetComponent<Image>();
+
+		}
 		letter = new Texture2D(3, 5);
 		letter.filterMode = FilterMode.Point;
 		for (int x = 0; x< 3; x++)
@@ -207,6 +217,7 @@ public class Main : MonoBehaviour {
 	}
 	public void ChangeImage(int letterindex)
 	{
+		pixelsmatched = 0;
 		for (int x = 0; x < 3; x++)
 		{
 		for (int y = 0; y < 5; y++)
@@ -222,12 +233,22 @@ public class Main : MonoBehaviour {
 			{
 				for (int y = 0; y < 5; y++)
 				{
-					if (!(letter.GetPixel(x, y) == (charactercolors[i][y * 3 + x] == 1 ? Color.white : Color.black))) break;
-					if (x == 2 && y == 4)
+					if (!(letter.GetPixel(x, y) == (charactercolors[i][y * 3 + x] == 1 ? Color.white : Color.black)))
+					{
+						pixelsmatched = 0;
+						break;
+					}
+					else
+					{
+						pixelsmatched++;
+					}
+					if (x == 2 && y == 4 && pixelsmatched == 15)
 					{
 						if (skipfirstletter)
 						{
 							score++;
+							buttons[i].SetActive(false);
+							seperateletters[i].color = Color.black;
 							return;
 						}
 						else
