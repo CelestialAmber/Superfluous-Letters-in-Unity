@@ -262,7 +262,22 @@ public class Main : MonoBehaviour {
 	}
 	public void Reset()
 	{
-		SceneManager.LoadScene("superfluous");
+		//SceneManager.LoadScene("superfluous");
+			for (int x = 0; x< 3; x++)
+		{
+		for (int y = 0; y< 5; y ++)
+		{
+				letter.SetPixel(x, y, Color.black);
+
+		}	
+		}
+		letter.Apply();
+		for (int i = 0; i < 26; i++)
+		{
+			if (seperateletters[i].color != Color.black)
+				buttons[i].SetActive(true);
+
+		}
 
 	}
 	// Update is called once per frame
