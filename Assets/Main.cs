@@ -17,7 +17,6 @@ public class Main : MonoBehaviour {
 	 Image[] seperateletters = new Image[26];
 	// Use this for initialization
 	void Start () {
-		Screen.SetResolution(276, 364, false);
 		for (int i = 0; i < 26; i++)
 		{
 			buttons[i] = buttonholder.transform.GetChild(i).gameObject;
